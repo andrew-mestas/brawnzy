@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
 
   root 'main#index'
+
   # post 'user/new' 
 
-  # get 'workout/index'
 
-  # get 'workout/all'
+  get 'workout/all' => 'workout#all'
+
+  get 'workout/new' => 'workout#new'
+  
+  post 'workout/new' => 'workout#create'
+
+  get 'workout/:id' => 'workout#show'
+
+
 
   # get 'workout/create'
 
@@ -28,7 +36,7 @@ Rails.application.routes.draw do
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 
   # Example resource route (maps HTTP verbs to controller actions automatically):
-    resources :workout
+    # resources :workout
     # resources :user
 
   # Example resource route with options:
