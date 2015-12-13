@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'oauth/callback'
+
+  get 'oauth/logout'
+
+  get 'oauth/failure'
+
   root 'main#index'
 
   # post 'user/new' 
