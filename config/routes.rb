@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   # post 'user/new' 
 
+  # provider routes for facebook/auth controller
+  get 'auth/logout' => 'oauth#logout'
+  get 'auth/failure' => 'oauth#failure'
+  get 'auth/:provider/callback' => 'oauth#callback'
 
+  # routes for main app
   get 'workout/all' => 'workout#all'
 
   get 'workout/new' => 'workout#new'
