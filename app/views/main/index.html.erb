@@ -6,19 +6,12 @@
 <% end%>
 </h1>
 
-<a href="/workout/all">Login</a>
 <h1>Home</h1>
 
-<%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-primary" %>
 
-<% if @current_user %>
-  <%= link_to 'Logout', auth_logout_path, class: 'btn btn-danger' %>
-<% end %>
 
-<div class="well">
-  Current User: 
-  <%= @current_user.inspect %>  
-</div>
+
+
 
 <script type="text/javascript" src="/fullpage-signin.js"></script>
 <hr>

@@ -7,10 +7,10 @@ class OauthController < ApplicationController
   		u.provider_hash = provider_user['credentials']['token']
   		u.name = provider_user['info']['name']
   		u.email = provider_user['info']['email']
-  		# u.password = u.password_confirmation = SecureRandom.urlsafe_base64(n=6)
+  		u.password = u.password_confirmation = SecureRandom.urlsafe_base64(n=6)
   	end
   	#store user inside of session
-  	session[:user_id] = user_id
+  	session[:user_id] = user.id
   	redirect_to root_path
   end
 
