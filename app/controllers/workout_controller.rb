@@ -18,12 +18,12 @@ class WorkoutController < ApplicationController
 
   def create
 
-    render json: params
+    # render json: params
     workout = Workout.where(workout_params).first_or_create
     workout.user_id = @current_user.id
     workout.day_index = day_index(params['workout']['day_index'])
     workout.save
-    # redirect_to "/workout/all"
+    redirect_to "/workout/all"
   end
 
   def show

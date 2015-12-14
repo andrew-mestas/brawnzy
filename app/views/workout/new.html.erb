@@ -18,7 +18,7 @@
   <%= f.text_field :name, required: true %><br />
 
   <%= f.label :set_amount %>:
-  <%= f.number_field(:set_amount, in: 1..20, pattern: '[\d\.]*', step: 1,required: true) %><br />
+  <%= f.telephone_field(:set_amount, in: 1..20, pattern: '[\d\.]*', step: 1,required: true) %><br />
   <button id="workout_set_amount_button">Sets</button>
   <div id="addTo">
   </div>
