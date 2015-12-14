@@ -12,5 +12,3 @@ class CreateUsers < ActiveRecord::Migration
     end
   end
 end
-
-User.new(name=>"Person")
