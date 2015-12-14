@@ -1,9 +1,10 @@
 <%= render template: 'partials/nav' %>
 
 <h1>Workout#all</h1>
-<a href="../workout/1">View Workout 1</a><br>
-<a href="../workout/2">View Workout 2</a><br>
-<a href="../workout/3">View Workout 3</a><br>
-<a href="../workout/4">View Workout 4</a><br>
+
+<% @workouts.each do |workout| %>
+ <a href="../workout/<%=workout.id%>"><%=workout.workout_type%>-<%=workout.name%><br></a>
+ <% end %>
+
 <br><hr>
 <a href="../workout/new">Create Workout</a>

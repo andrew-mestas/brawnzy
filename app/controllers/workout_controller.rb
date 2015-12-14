@@ -3,23 +3,29 @@ class WorkoutController < ApplicationController
   end
 
   def all
-    # @workouts = Workout.all
+    @workouts = User.all.second.workout
+    # render json: @workouts
   end
 
   def new    
+     @workout = Workout.new
   end
 
   def view
-    # @workout = Workout.find()
+    # @workout = Workout.find
   end
 
   def create
-    render json: params
-    # Workout.new()
-    # redirect_to "/workout/all"
+    Workout.where(workout_params).first_or_create
+    # render json: workout_params
+    redirect_to "/workout/all"
   end
 
   def show
+    @workout = Workout.where(id: params['id']).select(:id, :name, :workout_type, :set_amount, :weight, :weekday, :weekly).take
+    @workout = JSON.parse(@workout.to_json)
+    # render json: @workout
+
   end
 
   def stats
@@ -29,5 +35,11 @@ class WorkoutController < ApplicationController
 
   def nearme
     # geolocation
+  end
+
+  private
+
+  def workout_params
+    params.require(:workout).permit(:workout_type, :name, :set_amount, :weight, :weekday, :weekly)
   end
 end

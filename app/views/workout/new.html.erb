@@ -1,19 +1,27 @@
+<%= render template: 'partials/nav' %>
+
 <h1>New</h1>
 
 <h1>Workout#create</h1>
 
-<%= form_for :workout do |f| %>
-  <%= f.label :type %>:
-  <%= f.text_field :type %><br />
+<%= form_for @workout, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
+  <%= f.label :workout_type %>:
+  <%= f.text_field :workout_type, required: true%><br />
 
   <%= f.label :name %>:
-  <%= f.text_field :name %><br />
+  <%= f.text_field :name, required: true %><br />
 
-  <%= f.label :sets %>:
-  <%= f.text_field :sets %><br />
+  <%= f.label :set_amount %>:
+  <%= f.number_field(:set_amount, in: 1..20, step: 1,required: true) %><br />
 
-  <%= f.label :time %>:
-  <%= f.text_field :time %><br />
+  <%= f.label :weight %>:
+  <%= f.number_field(:weight, in: 0..400, step: 5,required: true) %><br />
+
+  <%= f.label :weekday %>:
+  <%= f.datetime_local_field (:weekday) %><br />
+
+  <%= f.label(:weekly, "Weekly?") %>
+  <%= f.check_box(:weekly) %>
 
   <%= f.submit %>
 <% end %>

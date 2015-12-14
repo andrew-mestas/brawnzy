@@ -1,1 +1,16 @@
-<span><h4>edit Logout Add</h4></span>
+<%= link_to "Home", :root, class: 'btn btn-default' %>
+<%= link_to "Workout List", :workout_all, class: 'btn btn-default' %>
+<%= link_to "Add Workout", :workout_new, class: 'btn btn-default' %>
+<% if @current_user %>
+<%= link_to "Sign Out", :signout, class: "btn btn-lg btn-default" %>
+<% else %>
+<%= link_to "Sign Up", :users_new, class: "btn btn-lg btn-default" %>
+<% end %>
+<div id="login">
+<%= form_for :user,  url: signin_path do |user| %>
+<%= user.text_field :email, :label => 'Email address', :placeholder => 'Email', class: "form-control input-lg" %>
+<%= user.password_field :password, :label => 'Password', :placeholder => 'Password', class: "form-control input-lg" %>
+
+<%= user.submit 'Sign In', class: "btn btn-lg btn-default" %>
+<% end %>
+</div>

@@ -1,7 +1,17 @@
-<h1>Welcome to Brawnzy</h1>
-<!-- form on submit handles auth ridirects in controller to view all workouts -->
-<a href="/workout/all">Login</a>
+<%= render template: 'partials/nav' %>
 
+<h1>Welcome to Brawnzy 
+<% if @current_user%>
+<%=@current_user.name%>
+<% end%>
+</h1>
+<!-- form on submit handles auth ridirects in controller to view all workouts -->
+<!-- <a href="/workout/all">Login</a> -->
+
+
+
+
+<script type="text/javascript" src="/fullpage-signin.js"></script>
 <hr>
 <h1>How to Use</h1>
 <br><hr>

@@ -13,8 +13,17 @@ Rails.application.routes.draw do
 
   get 'workout/:id' => 'workout#show'
 
+  get '/signin' => 'sessions#new'
 
+  post '/signin' => 'sessions#create'
 
+  get '/signout' => 'sessions#destroy'
+
+  get '/users/new' => 'user#new'
+
+  post '/users/new' => 'user#create'
+
+  resources :user
   # get 'workout/create'
 
   # get 'workout/view'

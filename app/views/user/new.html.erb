@@ -1,2 +1,17 @@
 <h1>User#new</h1>
 <p>Find me in app/views/user/new.html.erb</p>
+<p class="title">Sign Up</p>
+    <div class="col-xs-10 col-sm-4 col-xs-offset-1 col-sm-offset-4">
+      <%= form_for :user do |user| %>
+        <div class="row">
+          <div class="col-xs-6">
+            <%= user.text_field :name, :label => 'Name', :placeholder => 'First Last', class: "form-control input" %>
+          </div>
+        </div>
+        <%= user.text_field :email, :label => 'Email address', :placeholder => 'Email', class: "form-control" %>
+        <%= user.password_field :password, :label => 'Create a password', :placeholder => 'Password (8 character minimum)', class: "form-control" %>
+        <%= user.password_field :password_confirmation, :hide_label => true, :placeholder => 'Confirm Password', class: "form-control" %>
+      
+        <%= user.submit 'Sign Up', class: "btn btn-lg btn-default" %>
+      <% end %>
+    </div>

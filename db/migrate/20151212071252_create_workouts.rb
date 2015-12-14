@@ -2,7 +2,7 @@ class CreateWorkouts < ActiveRecord::Migration
   def change
     create_table :workouts do |t|
       t.references :user, index: true, foreign_key: true
-      t.string :type
+      t.string :workout_type
       t.string :name
       t.integer :set_amount
       t.integer :weight

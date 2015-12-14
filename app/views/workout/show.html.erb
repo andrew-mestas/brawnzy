@@ -1,1 +1,9 @@
+<%= render template: 'partials/nav' %>
+
 <h1>View Workout</h1>
+
+<% @workout.each do |k, v| %>
+<% if k != 'id'%>
+<%="#{k}: #{v}"%><br>
+<%end%>
+<%end%>
