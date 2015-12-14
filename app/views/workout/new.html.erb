@@ -6,22 +6,54 @@
 
 <%= form_for @workout, url: {action: "create"}, html: {class: "nifty_form"} do |f| %>
   <%= f.label :workout_type %>:
-  <%= f.text_field :workout_type, required: true%><br />
-
+    <select name="workout[workout_type]">
+      <option>Custom</option>
+      <option>Cardio</option>
+      <option>Strength</option>
+      <option>Upper Body</option>
+      <option>Lower Body</option>
+      <option>Core</option>
+    </select>
   <%= f.label :name %>:
   <%= f.text_field :name, required: true %><br />
 
   <%= f.label :set_amount %>:
-  <%= f.number_field(:set_amount, in: 1..20, step: 1,required: true) %><br />
-
-  <%= f.label :weight %>:
-  <%= f.number_field(:weight, in: 0..400, step: 5,required: true) %><br />
+  <%= f.number_field(:set_amount, in: 1..20, pattern: '[\d\.]*', step: 1,required: true) %><br />
+  <button id="workout_set_amount_button">Sets</button>
+  <div id="addTo">
+  </div>
 
   <%= f.label :weekday %>:
   <%= f.datetime_local_field (:weekday) %><br />
 
   <%= f.label(:weekly, "Weekly?") %>
   <%= f.check_box(:weekly) %>
+  <%= f.label :day_index %>:
+    <select name="workout[day_index]">
+      <option>Monday</option>
+      <option>Tuesday</option>
+      <option>Wednesday</option>
+      <option>Thursday</option>
+      <option>Friday</option>
+      <option>Saturday</option>
+      <option>Sunday</option>
+    </select>
+
 
   <%= f.submit %>
 <% end %>
+
+
+<script>
+  $("#workout_set_amount_button").click(function(e){
+    e.preventDefault();
+
+
+  for(var i = 0; i < $('#workout_set_amount').val(); i++){
+   var label = $('<label for="workout_weight">Set '+ i+1+'Weight</label>');
+   var count = $('<input step="5" required="required" min="0" max="400" type="number" name="workout[weight_'+i+']" id="workout_weight">');
+    $('#addTo').append(label).append(count)
+  }
+  });
+
+</script>

@@ -9,6 +9,7 @@ class CreateWorkouts < ActiveRecord::Migration
       t.time :avg_time
       t.datetime :weekday
       t.boolean :weekly
+      t.integer :day_index
 
       t.timestamps null: false
     end

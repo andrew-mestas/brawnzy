@@ -17,3 +17,6 @@
   display: inline-block;
   float: right
 }
+.clickable:hover{
+	background: #61EBFF;
+}

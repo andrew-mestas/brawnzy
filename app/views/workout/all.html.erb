@@ -1,10 +1,13 @@
 <%= render template: 'partials/nav' %>
 
-<h1>Workout#all</h1>
+<h1>Workouts for <%=@time.month%>/<%=@time.day%>/<%= @time.year %></h1>
 
 <% @workouts.each do |workout| %>
+<div class="well">
  <a href="../workout/<%=workout.id%>"><%=workout.workout_type%>-<%=workout.name%><br></a>
+ </div>
  <% end %>
+
 
 <br><hr>
 <a href="../workout/new">Create Workout</a>
