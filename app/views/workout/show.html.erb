@@ -4,11 +4,12 @@
 
 <div class="your-clock"></div>
 
+<%weights = @workout['weight'].split(',')%>
 <div class="container">
  <div class="well text-center">
   <% for i in 0...@workout['set_amount'] do %>
    <div class="well clickable">
-	<h4> Set: <%=i+1%> <%=@workout['name']%> <%=@workout['weight']%>lbs  </h4>
+	<h4> Set: <%=i+1%> <%=@workout['name']%> <%=weights[i]%>lbs  </h4>
    </div>
   <% end %>
  </div>

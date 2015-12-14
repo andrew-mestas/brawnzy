@@ -22,6 +22,7 @@ class WorkoutController < ApplicationController
     workout = Workout.where(workout_params).first_or_create
     workout.user_id = @current_user.id
     workout.day_index = day_index(params['workout']['day_index'])
+    workout.weight = weight_sets(params['workout'])
     workout.save
     redirect_to "/workout/all"
   end
@@ -45,8 +46,24 @@ class WorkoutController < ApplicationController
   private
 
   def workout_params
-    params.require(:workout).permit(:workout_type, :name, :set_amount, :weight, :weekday, :weekly)
+    params.require(:workout).permit(:workout_type, :name, :set_amount, :weekday, :weekly)
   end
+
+  def weight_sets params
+      weights = ""
+    if params['set_amount'].to_i < 2
+      weights << params['weight_0']
+    else  
+
+      for i in 0...params['set_amount'].to_i do
+        index = "weight_" + i.to_s
+        weights << params[index] 
+        weights << ','
+      end
+      weights.pop
+    end
+    weights
+end
 
   def day_index day_index
       index = nil

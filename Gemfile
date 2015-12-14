@@ -29,6 +29,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'sweet-alert'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
