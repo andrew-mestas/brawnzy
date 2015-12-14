@@ -1,9 +1,35 @@
 <%= render template: 'partials/nav' %>
 
-<h1>View Workout</h1>
+<h1><%=@workout['workout_type']%></h1>
 
-<% @workout.each do |k, v| %>
-<% if k != 'id'%>
-<%="#{k}: #{v}"%><br>
-<%end%>
-<%end%>
+<div class="your-clock"></div>
+
+<div class="container">
+ <div class="well text-center">
+  <% for i in 0...@workout['set_amount'] do %>
+   <div class="well clickable">
+	<h4> Set: <%=i+1%> <%=@workout['name']%> <%=@workout['weight']%>lbs  </h4>
+   </div>
+  <% end %>
+ </div>
+</div>
+
+<script>
+$(document).ready(function(){	
+
+var toggle = true;
+var clock = new FlipClock($('.your-clock'), {
+autoStart: false
+});
+
+$(".clickable").click(function(){
+	if(toggle){
+	clock.start(function() {});
+	toggle = !toggle;
+	} else {
+	clock.stop(function() {});
+	toggle = !toggle;
+	}
+});
+});
+</script>

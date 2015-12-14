@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
 			redirect_to root_path
 		else
 			flash[:danger] = 'Incorrect email/password, please try again'
-			redirect_to signin_path
+			redirect_to root_path
 		end
 	end
 

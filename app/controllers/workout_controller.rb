@@ -3,7 +3,8 @@ class WorkoutController < ApplicationController
   end
 
   def all
-    @workouts = User.all.second.workout
+    @time = Time.new
+    @workouts = User.find(@current_user.id).workout.where(:day_index =>@time.wday)
     # render json: @workouts
   end
 
@@ -16,9 +17,13 @@ class WorkoutController < ApplicationController
   end
 
   def create
-    Workout.where(workout_params).first_or_create
-    # render json: workout_params
-    redirect_to "/workout/all"
+
+    render json: params
+    workout = Workout.where(workout_params).first_or_create
+    workout.user_id = @current_user.id
+    workout.day_index = day_index(params['workout']['day_index'])
+    workout.save
+    # redirect_to "/workout/all"
   end
 
   def show
@@ -42,4 +47,29 @@ class WorkoutController < ApplicationController
   def workout_params
     params.require(:workout).permit(:workout_type, :name, :set_amount, :weight, :weekday, :weekly)
   end
+
+  def day_index day_index
+      index = nil
+
+    case day_index
+    when 'Monday'
+      index = 1
+    when 'Tuesday'
+      index = 2
+    when 'Wednesday'
+      index = 3
+    when 'Thursday'
+      index = 4
+    when 'Friday'
+      index = 5
+    when 'Saturday'
+      index = 6
+    when 'Sunday'
+      index = 0
+    else
+      index = -1
+    end
+
+  index
+end
 end
