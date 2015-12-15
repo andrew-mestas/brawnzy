@@ -5,7 +5,7 @@ class CreateWorkouts < ActiveRecord::Migration
       t.string :workout_type
       t.string :name
       t.integer :set_amount
-      t.string :weight
+      t.integer :weight
       t.time :avg_time
       t.datetime :weekday
       t.boolean :weekly

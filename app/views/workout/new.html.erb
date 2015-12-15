@@ -28,7 +28,7 @@
 
   <%= f.label(:weekly, "Weekly?") %>
   <%= f.check_box(:weekly) %>
-  <%= f.label :day_index %>:
+  <%= f.label :Day_of_the_week %>:
     <select name="workout[day_index]">
       <option>Monday</option>
       <option>Tuesday</option>
@@ -37,9 +37,7 @@
       <option>Friday</option>
       <option>Saturday</option>
       <option>Sunday</option>
-    </select>
-
-
+      </select>
   <%= f.submit %>
 <% end %>
 

@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
 
-  get 'oauth/callback'
-
-  get 'oauth/logout'
-
-  get 'oauth/failure'
-
   root 'main#index'
 
+  get 'oauth/callback'
+  get 'oauth/logout'
+  get 'oauth/failure'
   # post 'user/new' 
 
   # provider routes for facebook/auth controller
@@ -17,21 +14,16 @@ Rails.application.routes.draw do
 
   # routes for main app
   get 'workout/all' => 'workout#all'
-
-  get 'workout/new' => 'workout#new'
-  
+  get 'workout/new' => 'workout#new'  
   post 'workout/new' => 'workout#create'
-
   get 'workout/:id' => 'workout#show'
+  post 'workout/:id' => 'workout#time'
 
   get '/signin' => 'sessions#new'
-
   post '/signin' => 'sessions#create'
-
   get '/signout' => 'sessions#destroy'
 
   get '/users/new' => 'user#new'
-
   post '/users/new' => 'user#create'
 
   resources :user

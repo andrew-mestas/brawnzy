@@ -4,12 +4,12 @@
 
 <!-- <div class="your-clock"></div> -->
 
-<%weights = @workout['weight'].split(',')%>
+<%weights = @sets%>
 <div class="container">
  <div class="well text-center">
-  <% for i in 0...@workout['set_amount'] do %>
+  <% for i in 0...@sets.length do %>
    <div class="well clickable">
-	<h4> Set: <%=i+1%> <%=@workout['name']%> <%=weights[i]%>lbs  </h4>
+	<h4> Set: <%=i+1%> <%=@workout['name']%> <%=weights[i].weight%>lbs  </h4>
    </div>
   <% end %>
  </div>
@@ -19,27 +19,49 @@
 $(document).ready(function(){	
 
 var toggle = true;
-
+var times = [];
+var storeTime = function(time){
+	times.push(time);
+	console.log("TIME: ", times);
+}
 
 $(".clickable").click(function(){
 	var stopping = true;
+	$(this).prop('disabled', true);
+	swal({title: "<div class=\"your-clock\"></div>",
+		  html: true,
+		  allowEscapeKey: false, 
+		  allowOutsideClick: false, 
+		  animation: 'slide-from-top',
+		  showConfirmButton: true,
+		  confirmButtonText: "Done resting"
+		  }, function(){
+		  	clock.stop( function() {
+		  		storeTime(parseInt(clock.time.time-1));
+		  		allDone();
+		  	});
+		  });
 
-	swal({title: "<div class=\"your-clock\"></div>",html: true});
 	var clock = new FlipClock($('.your-clock'), {
 	autoStart: true,
 	clockFace: 'MinuteCounter'
 	});
-	// clock.start(function() {
-	// 	console.log("Started")
-	// });
-
-$(".confirm").click(function(){
-	clock.stop(function() {console.log("total time: " + (parseInt(clock.time.time)-1).toString() )});
-	stopping = false;
+	$(this).css('background', 'red');
+	$(this).hide();
 });
 
-});
+var allDone = function(){
+	if($('.clickable').length == times.length){
+		
+		$.post(
+		  window.location.href,
+		  {'times' : times}
 
+		 ).done(function() {
+		 	window.open('../workout/all', '_self');
+		});
+	}
+}
 
 });
 </script>
