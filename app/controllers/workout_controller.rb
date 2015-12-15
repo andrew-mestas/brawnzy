@@ -18,9 +18,12 @@ class WorkoutController < ApplicationController
     times = data['times']
     
     set = WorkoutSet.where(workout_id: data['id'])
-    for i in 0...set.length
-    set[i].avg_time = Time.at(times[i].to_i).utc.strftime("%H:%M:%S")
-    set[i].save
+    for i in 0...times.length
+     newSet = WorkoutSet.new
+      newSet.avg_time = Time.at(times[i].to_i).utc.strftime("%H:%M:%S")
+      newSet.weight = set[i].weight
+      newSet.workout_id = set[i].workout_id     
+      newSet.save 
     end
 
     respond_to do |format|
@@ -51,8 +54,8 @@ class WorkoutController < ApplicationController
   end
 
   def show
-    @workout = Workout.where(id: params['id']).select(:id, :name, :workout_type, :weekday, :weekly).take
-    @sets = WorkoutSet.where(workout_id: @workout.id)
+    @workout = Workout.where(id: params['id']).select(:id, :name, :set_amount, :workout_type, :weekday, :weekly).take
+    @sets = WorkoutSet.where(workout_id: @workout.id).limit(@workout.set_amount)
     @workout = JSON.parse(@workout.to_json)
 
     # render json: @sets
