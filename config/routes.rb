@@ -25,7 +25,8 @@ Rails.application.routes.draw do
 
   get '/users/new' => 'user#new'
   post '/users/new' => 'user#create'
-
+  get '/gyms/nearme' => 'workout#nearme'
+  get '/stats' => 'workout#stats'
   resources :user
   # get 'workout/create'
 
