@@ -3,8 +3,10 @@
 <% if @current_user %>
   <%= link_to "Add Workout", :workout_new, class: 'btn btn-default' %>
   <%= link_to "Workout List", :workout_all, class: 'btn btn-default' %>
-  <%= link_to "Progress Graph", class: 'btn btn-default' %>
+  <%= link_to "Gyms Near Me", :gyms_nearme, class: 'btn btn-default' %>
+  <%= link_to "Progress Graph", :stats, class: 'btn btn-default' %>
   <%= link_to 'Logout', auth_logout_path, class: 'btn btn-danger' %>
+
   <% else %>
   <%= link_to "Sign Up", :users_new, class: "btn btn-lg btn-default" %>
   <%= link_to "Login with Facebook", "/auth/facebook", class: "btn btn-primary" %>
