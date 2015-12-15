@@ -2,7 +2,7 @@
 
 <h1><%=@workout['workout_type']%></h1>
 
-<div class="your-clock"></div>
+<!-- <div class="your-clock"></div> -->
 
 <%weights = @workout['weight'].split(',')%>
 <div class="container">
@@ -19,18 +19,27 @@
 $(document).ready(function(){	
 
 var toggle = true;
-var clock = new FlipClock($('.your-clock'), {
-autoStart: false
-});
+
 
 $(".clickable").click(function(){
-	if(toggle){
-	clock.start(function() {});
-	toggle = !toggle;
-	} else {
-	clock.stop(function() {});
-	toggle = !toggle;
-	}
+	var stopping = true;
+
+	swal({title: "<div class=\"your-clock\"></div>",html: true});
+	var clock = new FlipClock($('.your-clock'), {
+	autoStart: true,
+	clockFace: 'MinuteCounter'
+	});
+	// clock.start(function() {
+	// 	console.log("Started")
+	// });
+
+$(".confirm").click(function(){
+	clock.stop(function() {console.log("total time: " + (parseInt(clock.time.time)-1).toString() )});
+	stopping = false;
 });
+
+});
+
+
 });
 </script>

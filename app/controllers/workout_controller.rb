@@ -60,7 +60,7 @@ class WorkoutController < ApplicationController
         weights << params[index] 
         weights << ','
       end
-      weights.pop
+      weights[weights.length-1] = ""
     end
     weights
 end
