@@ -21,3 +21,8 @@
 .clickable:hover{
 	background: #61EBFF;
 }
+
+#map{
+	height:600px;
+	width: 600px;
+}

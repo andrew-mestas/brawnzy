@@ -30,6 +30,7 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'sweetalert-rails'
+gem 'geocoder'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
