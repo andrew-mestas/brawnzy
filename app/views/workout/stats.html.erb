@@ -2,3 +2,20 @@
 
 <h1>Workout#stats</h1>
 <p>Find me in app/views/workout/stats.html.erb</p>
+<% total_workouts = Hash.new(0) %>
+<% weights = [] %>
+<% times = [] %>
+
+<% @stats.each do |item| %>
+	<% if total_workouts.has_key?(item.workout_id) || total_workouts.empty? %>
+ 	<% total_workouts[item.workout_id] =  total_workouts[item.workout_id].to_i + 1%>
+ 	<% else %>
+	<% total_workouts[item.workout_id] = 1 %>
+ 	<% end %>
+
+ 	<% weights << item.weight %>
+ 	<% times << item.avg_time.utc.strftime("%H:%M:%S") %>
+<% end %>
+Total: <%= total_workouts %> <br>
+Weights: <%= weights %> <br>
+Times: <%= times %>
