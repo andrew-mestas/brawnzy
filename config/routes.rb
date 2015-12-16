@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   post '/gyms/nearme' => 'workout#getgyms'
 
   get '/stats' => 'workout#stats'
+
   resources :user
   # get 'workout/create'
 

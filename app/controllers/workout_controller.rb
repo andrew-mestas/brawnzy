@@ -1,3 +1,5 @@
+require 'open-uri'
+
 class WorkoutController < ApplicationController
   def index
   end
@@ -68,7 +70,10 @@ class WorkoutController < ApplicationController
 
   def getgyms
     puts params
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+params['coordinates']['latitude'].to_s+","+params['coordinates']['longitude'].to_s+"&radius=900&types=gym&key=" +ENV['MAPS_KEY']
 
+    response = open(url).read
+    render :json => response
   end
 
   def nearme
