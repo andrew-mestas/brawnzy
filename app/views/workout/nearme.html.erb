@@ -18,19 +18,37 @@
 	 var map = new google.maps.Map(document.getElementById('map'), {
 	   center: myLatLng,
 	   scrollwheel: false,
-	   zoom: 10
+	   zoom: 15
  });
 	 console.log(markers.results)
+	var infoWindow = new google.maps.InfoWindow();
+
 	for(i = 0; i < markers.results.length; i++){
 	var latLon = {
 		lat: markers.results[i].geometry.location.lat,
-		lng: markers.results[i].geometry.location.lng};
+		lng: markers.results[i].geometry.location.lng
+	};
 	var marker = new google.maps.Marker({
 	   map: map,
 	   position: latLon,
-	   title: 'Location'
+	   title: "title"
 		});
-	}
+	var names = markers.results[i].name;
+
+	(function(marker, name) {
+		google.maps.event.addListener(marker, "click", function (e) {
+ 		infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + name + "</div>");
+        infoWindow.open(map, marker);
+	});
+})(marker, names);
+
+
+	// marker.addListener("click", function() {
+	// 	console.log(markers.results[i])
+ //      var infoWindow = new google.maps.InfoWindow({content: "<h3>" + name + "</h3>"});
+ //      infoWindow.open(map, marker);
+ //    });
+}
 
  };
 
