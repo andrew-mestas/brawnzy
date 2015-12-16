@@ -34,13 +34,15 @@
 	   title: "title"
 		});
 	var names = markers.results[i].name;
+	var ratings = markers.results[i].rating;
+	var hours = markers.results[i].opening_hours;
 
-	(function(marker, name) {
+	(function(marker, name, rating) {
 		google.maps.event.addListener(marker, "click", function (e) {
- 		infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + name + "</div>");
+ 		infoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + name + " " + rating + " " + open_now + "</div>");
         infoWindow.open(map, marker);
 	});
-})(marker, names);
+})(marker, names,ratings, hours);
 
 
 	// marker.addListener("click", function() {
