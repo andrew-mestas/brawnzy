@@ -18,21 +18,20 @@ class WorkoutController < ApplicationController
   def time
     data = params
     times = data['times']
-    
-    set = WorkoutSet.where(workout_id: data['id'])
-    for i in 0...times.length
-     newSet = WorkoutSet.new
-      newSet.avg_time = Time.at(times[i].to_i).utc.strftime("%H:%M:%S")
-      newSet.weight = set[i].weight
-      newSet.workout_id = set[i].workout_id     
-      newSet.save 
-    end
+    puts data['times']
+    set = WorkoutSet.where(workout_id: data['id']).limit(times.length)
 
+      for i in 0...times.length
+       newSet = WorkoutSet.new
+        newSet.avg_time = Time.at(times[i].to_i).utc.strftime("%H:%M:%S")
+        newSet.weight = set[i].weight
+        newSet.workout_id = set[i].workout_id     
+        newSet.save 
+      end
     respond_to do |format|
-    format.html { redirect_to '/workout/all' }
-    # msg = { :status => "ok", :message => "Success!"}
-    # format.json  { render :json => msg } # don't do msg.to_json
+    format.html { render :json => {status: "OK"} }
    end
+
   end
 
   def view
@@ -49,7 +48,7 @@ class WorkoutController < ApplicationController
     weightList = set_params(params)[:P].split(',')
 
     for i in 0...num['set_amount'].to_i
-      set = WorkoutSet.where(workout_id: workout.id, weight: weightList[i]).create
+      set = WorkoutSet.where(workout_id: workout.id, weight: weightList[i], avg_time: '00:00:00').create
       set.save
     end
     redirect_to "/workout/all"
@@ -65,7 +64,7 @@ class WorkoutController < ApplicationController
   end
 
   def stats
-    # Workout.all()
+    @stats = WorkoutSet.all
     # functions
   end
 

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   post '/users/new' => 'user#create'
   get '/gyms/nearme' => 'workout#nearme'
   post '/gyms/nearme' => 'workout#getgyms'
+
   get '/stats' => 'workout#stats'
 
   resources :user
