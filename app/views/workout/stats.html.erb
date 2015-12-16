@@ -4,18 +4,33 @@
 <p>Find me in app/views/workout/stats.html.erb</p>
 <% total_workouts = Hash.new(0) %>
 <% weights = [] %>
-<% times = [] %>
+<%a=[0.001, 1, 60, 3600] %>
 
-<% @stats.each do |item| %>
-	<% if total_workouts.has_key?(item.workout_id) || total_workouts.empty? %>
- 	<% total_workouts[item.workout_id] =  total_workouts[item.workout_id].to_i + 1%>
- 	<% else %>
-	<% total_workouts[item.workout_id] = 1 %>
- 	<% end %>
+<% times = Hash.new(0) %>
+<% lengths = [] %>
+<% average = []%>
+<% for i in 0...@stats.length do times[i] = 0 end%>
 
- 	<% weights << item.weight %>
- 	<% times << item.avg_time.utc.strftime("%H:%M:%S") %>
+
+<% @stats.each_with_index do |w, i| %>
+  <% lengths << w.length%>
+  <% w.each_with_index do |t, o| %>
+   <% times[i] += t.avg_time.utc.strftime("%T.%L")
+   				.split(/[:\.]/)
+   				.map{|time| time.to_i*a.pop}
+   				.inject(&:+)%>
+	<% a=[0.001, 1, 60, 3600] %>
+  
+  <% end %>
 <% end %>
-Total: <%= total_workouts %> <br>
-Weights: <%= weights %> <br>
-Times: <%= times %>
+
+<% times.each_with_index do |time, i| %>
+<% average << (time[1] / lengths[i]).round(2) %>
+<% end %>
+
+
+<% @stats.each_with_index do |w, i| %>
+<%= w[0].workout.workout_type %> <%=w[0].workout.name%><br><%= w.length %> times<br>average rest time: <%= average[i]%><br><hr>
+
+<% end %>
+

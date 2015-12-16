@@ -4,25 +4,25 @@
 <p>Find me in app/views/workout/nearme.html.erb</p>
 
 
-<div id="map">
-	
-
-</div>
+<div id="map"></div>
 
 <script type="text/javascript">
-
 	function initMap(markers, coords) {
-
 	 var myLatLng = {lat:coords.latitude, lng:coords.longitude};
-	 // Create a map object and specify the DOM element for display.
 	 var map = new google.maps.Map(document.getElementById('map'), {
 	   center: myLatLng,
+<<<<<<< HEAD
 	   scrollwheel: false,
 	   zoom: 15
  });
 	 console.log(markers.results)
 	var infoWindow = new google.maps.InfoWindow();
 
+=======
+	   scrollwheel: true,
+	   zoom: 14
+ });
+>>>>>>> c304fdc540d99486e39f9274e9499bdfcac4ca8e
 	for(i = 0; i < markers.results.length; i++){
 	var latLon = {
 		lat: markers.results[i].geometry.location.lat,
@@ -54,22 +54,14 @@
 
  };
 
-// google.maps.event.addDomListener(window, 'load', initialize);
-
-
 $(document).ready(function() {
-
 	if (navigator.geolocation) {
-
 		navigator.geolocation.getCurrentPosition(showPosition);
 	}else {
 		console('Error');
 	}
 	function showPosition(position) {
-		// myLatLng.lat = position.coords.latitude
-		// myLatLng.lng = position.coords.longitude
 		$.post(
-
 			window.location.href, 
 			{'coordinates' : position.coords}
 			).done(function(data) {
@@ -77,8 +69,7 @@ $(document).ready(function() {
 				initMap(data, position.coords)
 			});
 	};
-
 });
-
 </script>
+
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJcRqrc4pxkYbpNlOS7AXaEut-qhELP50&libraries=places"></script>
