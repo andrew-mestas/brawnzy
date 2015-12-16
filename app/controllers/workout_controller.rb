@@ -59,18 +59,28 @@ class WorkoutController < ApplicationController
     @sets = WorkoutSet.where(workout_id: @workout.id).limit(@workout.set_amount)
     @workout = JSON.parse(@workout.to_json)
 
-    # render json: @sets
-
   end
 
   def stats
-    @stats = WorkoutSet.all
-    # functions
+    @user_workouts = User.find(@current_user.id).workout
+    # @strength
+    # @custom 
+    # @cardio
+    # @upperbody
+    # @lowerbody
+    # @core 
+    @stats = []
+    
+    @user_workouts.each do |w|
+      @stats << WorkoutSet.where(workout_id: w.id)
+    end
+    @stats
+
   end
 
   def getgyms
     puts params
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+params['coordinates']['latitude'].to_s+","+params['coordinates']['longitude'].to_s+"&radius=900&types=gym&key=" +ENV['MAPS_KEY']
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+params['coordinates']['latitude'].to_s+","+params['coordinates']['longitude'].to_s+"&radius=900&types=gym&key=" + ENV['MAPS_KEY']
 
     response = open(url).read
     render :json => response
