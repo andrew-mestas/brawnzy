@@ -18,7 +18,12 @@ def create
   end
 
   def stats
-  	stats = Workout.all
+  	stats = User.find_by_name(params[:name])
+  	render json: stats
+  end
+  
+  def user_stats
+  	stats = User.find_by_name(params[:name])
   	render json: stats
   end
 
