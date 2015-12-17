@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root 'main#index'
-
+  get '/' => 'main#index'
   get 'oauth/callback'
   get 'oauth/logout'
   get 'oauth/failure'
