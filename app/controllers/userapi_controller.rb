@@ -27,7 +27,7 @@ class UserapiController < ApplicationController
 	private
 
 	def user_params
-	  params.require(:data).permit(:name, :email, :clientID)
+	  params.permit(:name, :email, :clientID)
 	end
 
 end
