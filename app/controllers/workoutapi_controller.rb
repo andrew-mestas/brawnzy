@@ -6,7 +6,7 @@ def create
   	render json: workout_params
   	puts weight_sets params
 
-  	user = User.find_by_name(params[:name]);
+  	user = User.find_by_name(params[:personName]);
 
   	workout = Workout.where(workout_params).first_or_create
   	workout.user_id = user.id;
