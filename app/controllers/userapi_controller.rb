@@ -15,6 +15,7 @@ class UserapiController < ApplicationController
 					# session[:user_id] = @user.id
 					# flash[:success] = "User created!!"
 					# redirect_to root_path
+					@user.save
 					render json: {msg: "Created User", status: "OK", token: params}
 				else
 					render json: {msg: "Credentials Invalid!!", status: "Error"}
