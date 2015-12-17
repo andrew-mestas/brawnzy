@@ -17,6 +17,8 @@ Bundler.require(*Rails.groups)
 
 module Brawnzy
   class Application < Rails::Application
+    config.web_console.whitelisted_ips = '10.11.98.58'
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

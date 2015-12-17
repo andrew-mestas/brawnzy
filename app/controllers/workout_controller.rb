@@ -78,6 +78,26 @@ class WorkoutController < ApplicationController
 
   end
 
+  # def statsapi
+  #   @user_workouts = User.find(@current_user.id).workout
+  #   # @strength
+  #   # @custom 
+  #   # @cardio
+  #   # @upperbody
+  #   # @lowerbody
+  #   # @core 
+  #   @stats = []
+    
+  #   @user_workouts.each do |w|
+  #     @stats << WorkoutSet.where(workout_id: w.id)
+  #   end
+  #   @stats
+
+  #   render json: @stats
+
+  # end
+
+
   def getgyms
     puts params
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+params['coordinates']['latitude'].to_s+","+params['coordinates']['longitude'].to_s+"&radius=900&types=gym&key=" + ENV['MAPS_KEY']

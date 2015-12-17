@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get 'workout/all' => 'workout#all'
   get 'workout/new' => 'workout#new'  
   post 'workout/new' => 'workout#create'
+
+  
+
+
   get 'workout/:id' => 'workout#show'
   post 'workout/:id' => 'workout#time'
 
@@ -25,10 +29,25 @@ Rails.application.routes.draw do
 
   get '/users/new' => 'user#new'
   post '/users/new' => 'user#create'
+
+
   get '/gyms/nearme' => 'workout#nearme'
   post '/gyms/nearme' => 'workout#getgyms'
-
   get '/stats' => 'workout#stats'
+
+# API ENDPOINTS
+
+  get '/api' => 'main#api'
+
+  get '/api/stats' => 'workoutapi#stats'
+  get '/api/workout' => 'workoutapi#all'
+  post '/api/workout' => 'workoutapi#create'
+
+  get '/api/workout/:id' => 'workoutapi#show'
+  post '/api/workout/:id' => 'workoutapi#time'
+  post '/api/nearme' => 'workoutapi#nearme'
+
+  post '/api/users/create' => 'userapi#create'
 
   resources :user
   # get 'workout/create'
