@@ -23,7 +23,7 @@ def create
   end
   
   def user_stats
-  	stats = User.find_by_name(params[:name])
+  	stats = User.find_by_name(params[:name]).workout
   	render json: stats
   end
 
