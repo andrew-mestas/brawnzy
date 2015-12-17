@@ -30,7 +30,14 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'sweetalert-rails'
+
 gem 'geocoder'
+
+gem 'pg'
+
+ruby '2.2.2'
+
+gem 'rails_12factor', group: :production
 
 # Use Unicorn as the app server
 # gem 'unicorn'
