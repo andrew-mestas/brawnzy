@@ -6,7 +6,10 @@ def create
   	render json: workout_params
   	puts weight_sets params
 
+  	user = User.find_by_name(params[:name]);
+
   	workout = Workout.where(workout_params).first_or_create
+  	workout.user_id = user.id;
 	workout.save
 
  	weightList = weight_sets(params).split(',')
