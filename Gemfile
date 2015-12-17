@@ -33,7 +33,7 @@ gem 'sweetalert-rails'
 
 gem 'geocoder'
 
-gem 'pg'
+gem 'puma'
 
 ruby '2.2.2'
 
