@@ -32,13 +32,59 @@ def create
    end
 
   def stats_data
-  	workouts = User.find_by_name(params[:name]).workout
-  	weight_sets = []
+  	puts params
+  	workouts = User.find_by_name(params[:name])
+  	if workouts != nil
+  		workouts = workouts.workout
+  	else 
+  		workouts = []
+  	end
+  		weight_sets = []
+
+  	if workouts.length > 1
     
     workouts.each do |w|
      weight_sets << WorkoutSet.where(workout_id: w.id)
     end
-  	render json: {workout: workouts, sets: weight_sets}
+     total_workouts = Hash.new(0) 
+ 	 weights = [] 
+	 a=[0.001, 1, 60, 3600] 
+
+ 		times = Hash.new(0) 
+ 		lengths = [] 
+ 		average = []
+
+ 	for i in 0...weight_sets.length do times[i] = 0 end
+	weight_sets.each_with_index do |w, i| 
+		
+   		lengths << w.length
+  	 	w.each_with_index do |t, o| 
+    	times[i] += t.avg_time.utc.strftime("%T.%L")
+   				.split(/[:\.]/)
+   				.map{|time| time.to_i*a.pop}
+   				.inject(&:+)
+	 a=[0.001, 1, 60, 3600] 
+		end 
+ 	end 
+
+ times.each_with_index do |time, i| 
+ 	if lengths[i] == 0
+ 		average << "No Data Yet"
+ 	else
+ 		average << (time[1] / lengths[i]).round(2) 
+ 	end
+ end 
+
+
+ # weight_sets.each_with_index do |w, i| 
+ # w[0].workout.workout_type  =w[0].workout.name<br>= w.length  times<br>average rest time: = average[i]
+
+
+
+  	render json: {workout: workouts, average: average}
+	else 
+	render json: {workout: "No workouts yet"}
+	end
   end
   
   def user_stats
