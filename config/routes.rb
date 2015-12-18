@@ -39,7 +39,7 @@ Rails.application.routes.draw do
 
   get '/api' => 'main#api'
 
-  get '/api/stats' => 'workoutapi#stats'
+  get '/api/stats' => 'workoutapi#stats_data'
   post '/api/stats' => 'workoutapi#user_stats'
   get '/api/workout' => 'workoutapi#all'
   post '/api/workout' => 'workoutapi#create'

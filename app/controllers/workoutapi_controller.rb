@@ -31,9 +31,14 @@ def create
     render json: response
    end
 
-  def stats
-  	stats = User.find_by_name(params[:name])
-  	render json: stats
+  def stats_data
+  	workouts = User.find_by_name(params[:name]).workout
+  	weight_sets = []
+    
+    workouts.each do |w|
+     weight_sets << WorkoutSet.where(workout_id: w.id)
+    end
+  	render json: {workout: workouts, sets: weight_sets}
   end
   
   def user_stats
