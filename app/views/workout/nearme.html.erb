@@ -52,7 +52,7 @@ $(document).ready(function() {
 	if (navigator.geolocation) {
 		navigator.geolocation.getCurrentPosition(showPosition);
 	}else {
-		console('Error');
+		console.log('Error');
 	}
 	function showPosition(position) {
 		$.post(

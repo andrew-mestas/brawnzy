@@ -1,3 +1,6 @@
+require 'open-uri'
+
+
 class WorkoutapiController < ApplicationController
 
 	protect_from_forgery with: :null_session, if: Proc.new { |c| c.request.format == 'application/json' }
@@ -19,6 +22,14 @@ def create
       set.save
     end
   end
+
+   def getgyms
+    puts params
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+params['lat'].to_s+","+params['lon'].to_s+"&radius=900&types=gym&key=" + ENV['MAPS_KEY']
+    # render json: params
+    response = open(url).read
+    render json: response
+   end
 
   def stats
   	stats = User.find_by_name(params[:name])

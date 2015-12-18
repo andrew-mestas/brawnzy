@@ -43,6 +43,7 @@ Rails.application.routes.draw do
   post '/api/stats' => 'workoutapi#user_stats'
   get '/api/workout' => 'workoutapi#all'
   post '/api/workout' => 'workoutapi#create'
+  post '/api/gyms/nearme' => 'workoutapi#getgyms'
 
   get '/api/workout/:id' => 'workoutapi#show'
   post '/api/workout/:id' => 'workoutapi#time'
