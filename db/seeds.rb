@@ -1,16 +1,13 @@
-User.create!([
-  {name: "Timmy Johnson", email: "test@gmail.com", password_digest: "$2a$10$uHwXKOdKsdSs6hHfka63huVXrU3Oi6UrENg.xXaBT7fXv6Gg7fsim", provider: nil, provider_id: nil, provider_hash: nil},
-  {name: "Billy Bob", email: "testing@gmail.com", password_digest: "$2a$10$VVisIPWC2ig4/UmOptSpLu.MtLoDvj4rRUu0QF8HEqvjq7i5Nahc2", provider: nil, provider_id: nil, provider_hash: nil}
-])
+
 Workout.create!([
-  {user_id: 1, workout_type: "Strength", name: "Bench Press", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-15 18:00:00", weekly: false, day_index: 2},
-  {user_id: 1, workout_type: "Lower Body", name: "Squat", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-15 18:00:00", weekly: false, day_index: 2},
-  {user_id: 1, workout_type: "Core", name: "Pull Ups", set_amount: 2, weight: nil, avg_time: nil, weekday: "2015-12-15 14:00:00", weekly: false, day_index: 2},
-  {user_id: 1, workout_type: "Lower Body", name: "Legs", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-15 14:00:00", weekly: false, day_index: 2},
-  {user_id: 1, workout_type: "Lower Body", name: "toes ", set_amount: 2, weight: nil, avg_time: nil, weekday: "2015-12-15 02:01:00", weekly: false, day_index: 2},
-  {user_id: 1, workout_type: "Strength", name: "Deadlift", set_amount: 4, weight: nil, avg_time: nil, weekday: "2015-12-15 16:02:00", weekly: false, day_index: 2},
-  {user_id: 1, workout_type: "Strength", name: "Power Dive", set_amount: 2, weight: nil, avg_time: nil, weekday: nil, weekly: false, day_index: 3},
+  {user_id: 2, workout_type: "Strength", name: "Bench Press", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-15 18:00:00", weekly: false, day_index: 2},
+  {user_id: 2, workout_type: "Lower Body", name: "Squat", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-15 18:00:00", weekly: false, day_index: 2},
+  {user_id: 2, workout_type: "Core", name: "Pull Ups", set_amount: 2, weight: nil, avg_time: nil, weekday: "2015-12-15 14:00:00", weekly: false, day_index: 2},
+  {user_id: 2, workout_type: "Lower Body", name: "Legs", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-15 14:00:00", weekly: false, day_index: 2},
+  {user_id: 2, workout_type: "Lower Body", name: "toes ", set_amount: 2, weight: nil, avg_time: nil, weekday: "2015-12-15 02:01:00", weekly: false, day_index: 2},
+  {user_id: 2, workout_type: "Strength", name: "Deadlift", set_amount: 4, weight: nil, avg_time: nil, weekday: "2015-12-15 16:02:00", weekly: false, day_index: 2},
   {user_id: 2, workout_type: "Strength", name: "Power Dive", set_amount: 2, weight: nil, avg_time: nil, weekday: nil, weekly: false, day_index: 3},
+  {user_id: 1, workout_type: "Strength", name: "Power Dive", set_amount: 2, weight: nil, avg_time: nil, weekday: nil, weekly: false, day_index: 3},
   {user_id: nil, workout_type: nil, name: nil, set_amount: nil, weight: nil, avg_time: nil, weekday: nil, weekly: nil, day_index: nil},
   {user_id: nil, workout_type: nil, name: nil, set_amount: nil, weight: nil, avg_time: nil, weekday: nil, weekly: nil, day_index: nil},
   {user_id: 1, workout_type: "Cardio", name: "Running", set_amount: 5, weight: nil, avg_time: nil, weekday: "2015-12-16 02:01:00", weekly: false, day_index: 3},
