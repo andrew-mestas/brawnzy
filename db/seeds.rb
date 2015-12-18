@@ -1,7 +1,78 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create!([
+  {name: "Timmy Johnson", email: "test@gmail.com", password_digest: "$2a$10$uHwXKOdKsdSs6hHfka63huVXrU3Oi6UrENg.xXaBT7fXv6Gg7fsim", provider: nil, provider_id: nil, provider_hash: nil},
+  {name: "Billy Bob", email: "testing@gmail.com", password_digest: "$2a$10$VVisIPWC2ig4/UmOptSpLu.MtLoDvj4rRUu0QF8HEqvjq7i5Nahc2", provider: nil, provider_id: nil, provider_hash: nil}
+])
+Workout.create!([
+  {user_id: 1, workout_type: "Strength", name: "Bench Press", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-15 18:00:00", weekly: false, day_index: 2},
+  {user_id: 1, workout_type: "Lower Body", name: "Squat", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-15 18:00:00", weekly: false, day_index: 2},
+  {user_id: 1, workout_type: "Core", name: "Pull Ups", set_amount: 2, weight: nil, avg_time: nil, weekday: "2015-12-15 14:00:00", weekly: false, day_index: 2},
+  {user_id: 1, workout_type: "Lower Body", name: "Legs", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-15 14:00:00", weekly: false, day_index: 2},
+  {user_id: 1, workout_type: "Lower Body", name: "toes ", set_amount: 2, weight: nil, avg_time: nil, weekday: "2015-12-15 02:01:00", weekly: false, day_index: 2},
+  {user_id: 1, workout_type: "Strength", name: "Deadlift", set_amount: 4, weight: nil, avg_time: nil, weekday: "2015-12-15 16:02:00", weekly: false, day_index: 2},
+  {user_id: 1, workout_type: "Strength", name: "Power Dive", set_amount: 2, weight: nil, avg_time: nil, weekday: nil, weekly: false, day_index: 3},
+  {user_id: 2, workout_type: "Strength", name: "Power Dive", set_amount: 2, weight: nil, avg_time: nil, weekday: nil, weekly: false, day_index: 3},
+  {user_id: nil, workout_type: nil, name: nil, set_amount: nil, weight: nil, avg_time: nil, weekday: nil, weekly: nil, day_index: nil},
+  {user_id: nil, workout_type: nil, name: nil, set_amount: nil, weight: nil, avg_time: nil, weekday: nil, weekly: nil, day_index: nil},
+  {user_id: 1, workout_type: "Cardio", name: "Running", set_amount: 5, weight: nil, avg_time: nil, weekday: "2015-12-16 02:01:00", weekly: false, day_index: 3},
+  {user_id: 2, workout_type: "Upper Body", name: "pull up", set_amount: 2, weight: nil, avg_time: nil, weekday: "2015-12-16 08:00:00", weekly: true, day_index: 3},
+  {user_id: 2, workout_type: "Strength", name: "Push Up", set_amount: 4, weight: nil, avg_time: nil, weekday: "2015-12-16 08:00:00", weekly: true, day_index: 3},
+  {user_id: 2, workout_type: "Upper Body", name: "Pull Up", set_amount: 3, weight: nil, avg_time: nil, weekday: "2015-12-16 08:00:00", weekly: true, day_index: 3},
+  {user_id: 2, workout_type: "Upper Body", name: "Pull", set_amount: 2, weight: nil, avg_time: nil, weekday: "2015-12-16 08:00:00", weekly: true, day_index: 3}
+])
+WorkoutSet.create!([
+  {workout_id: 1, avg_time: "2000-01-01 00:00:08", weight: 150},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:03", weight: 150},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:04", weight: 180},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:03", weight: 150},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:01", weight: 150},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:02", weight: 180},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:03", weight: 150},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:03", weight: 150},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:03", weight: 180},
+  {workout_id: 2, avg_time: "2000-01-01 00:00:08", weight: 200},
+  {workout_id: 2, avg_time: "2000-01-01 00:00:16", weight: 185},
+  {workout_id: 2, avg_time: "2000-01-01 00:00:14", weight: 220},
+  {workout_id: 2, avg_time: "2000-01-01 00:00:30", weight: 200},
+  {workout_id: 2, avg_time: "2000-01-01 00:00:05", weight: 185},
+  {workout_id: 2, avg_time: "2000-01-01 00:00:12", weight: 220},
+  {workout_id: 2, avg_time: "2000-01-01 00:00:03", weight: 200},
+  {workout_id: 2, avg_time: "2000-01-01 00:00:02", weight: 185},
+  {workout_id: 2, avg_time: "2000-01-01 00:00:02", weight: 220},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:05", weight: 5},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:03", weight: 10},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:02", weight: 5},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:02", weight: 10},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:01", weight: 5},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:01", weight: 10},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:01", weight: 5},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:01", weight: 10},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:03", weight: 150},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:01", weight: 150},
+  {workout_id: 1, avg_time: "2000-01-01 00:00:02", weight: 180},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:03", weight: 45},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:04", weight: 35},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:03", weight: 25},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:03", weight: 15},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:03", weight: 10},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:05", weight: 5},
+  {workout_id: 3, avg_time: "2000-01-01 00:00:05", weight: 10},
+  {workout_id: 4, avg_time: "2000-01-01 00:00:10", weight: 15},
+  {workout_id: 4, avg_time: "2000-01-01 00:00:09", weight: 25},
+  {workout_id: 4, avg_time: "2000-01-01 00:00:08", weight: 30},
+  {workout_id: 5, avg_time: "2000-01-01 00:00:11", weight: 10},
+  {workout_id: 5, avg_time: "2000-01-01 00:00:12", weight: 15},
+  {workout_id: 6, avg_time: "2000-01-01 00:00:11", weight: 200},
+  {workout_id: 6, avg_time: "2000-01-01 00:00:15", weight: 200},
+  {workout_id: 6, avg_time: "2000-01-01 00:00:09", weight: 200},
+  {workout_id: 6, avg_time: "2000-01-01 00:00:08", weight: 200},
+  {workout_id: 13, avg_time: "2000-01-01 00:00:05", weight: 22},
+  {workout_id: 13, avg_time: "2000-01-01 00:00:10", weight: 33},
+  {workout_id: 13, avg_time: "2000-01-01 00:00:13", weight: 44},
+  {workout_id: 14, avg_time: "2000-01-01 00:00:20", weight: 33},
+  {workout_id: 14, avg_time: "2000-01-01 00:00:11", weight: 44},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:03", weight: 45},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:06", weight: 35},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:07", weight: 25},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:06", weight: 15},
+  {workout_id: 15, avg_time: "2000-01-01 00:00:06", weight: 10}
+])
