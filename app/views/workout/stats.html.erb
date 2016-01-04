@@ -30,7 +30,9 @@
 
 
 <% @stats.each_with_index do |w, i| %>
-<%= w[0].workout.workout_type %> <%=w[0].workout.name%><br><%= w.length %> times<br>average rest time: <%= average[i]%><br><hr>
+<%= w[0].workout.workout_type %> <%=w[0].workout.name%><br><%= w.length %> times<br>average rest time: <%= average[i]%>
+
+<br><hr>
 
 <% end %>
 

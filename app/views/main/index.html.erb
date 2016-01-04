@@ -1,18 +1,92 @@
 <div id="fullpage">
-<div class="section">
-<%= render template: 'partials/nav' %>
-
-<h1>Welcome to Brawnzy 
-<% if @current_user%>
-<%=@current_user.name%>
-<% end%>
-</h1>
+<div class="section text-center">
+	<h1>Welcome to rocky-oasis-8496</h1>
+	<h2><small>The Workout api</small></h2>
 </div>
-    <div class="section">How to Use</div>
-    <div class="section">About</div>
+<div class="section text-left">
+ <div class="table-responsive">
+	<h1>How to Use</h1>
+		<table class="table">
+		 <thead>
+		 	<tr>
+		 	 <th>Method</th>
+		 	 <th>URL</th>
+		 	 <th>Description</th>	
+		 	 <th>Parameters</th>
+		 	</tr>
+		 </thead>
+		 <tbody>
+		  <tr>
+			<td><b>GET</b></td>
+			<td><a href="https://rocky-oasis-8496.herokuapp.com/api" target="_blank">/api</a></td>
+			<td>Test If It Works</td>
+			<td></td>
+		  <tr>
+		  <tr> 
+		    <td><b>GET</b></td>
+		    <td><a href="https://rocky-oasis-8496.herokuapp.com/api/stats/Timmy Johnson" target="_blank">/api/stats/Timmy Johnson</a></td>		  	
+		    <td>Get All Workouts And Average Time</td>
+		   	<td></td>
+		  </tr>
+		  <tr>
+		    <td><b>GET</b></td>
+		    <td><a href="https://rocky-oasis-8496.herokuapp.com/api/workout" target="_blank">/api/workout</a></td>		  	
+		    <td>Gets All Workouts In DB</td>
+		    <td></td>
+		  </tr>
+		  <tr>
+ 		    <td><b>POST</b></td>
+ 		    <td>/api/stats</td>
+ 		    <td>Get Your Stats</td>
+ 		    <td>{ name: "First Last" }</td>
+		  </tr>
+		  <tr>
+		  	<td><b>POST</b></td>
+		  	<td>/api/workout</td>
+		  	<td>Creates New Workout</td>
+		  	<td>{
+ 				<br>personName:   "First Last",
+				<br>workout_type: "Upper Body",
+   				<br>name:         "Barbel Curl",
+ 				<br>set_amount:   3,
+				<br>weekday:      Date ex. 2015-12-16T13:03:00.000Z,
+				<br>weekly:       0/1,
+				<br>day_index:    0-6 (0 = Monday, 1 = Tuesday)
+				<br>
+				}</td>
+		  </tr>
+		  <tr>
+		  	<td><b>POST</b></td>
+		  	<td>/api/gyms/nearme</td>
+		  	<td>Get Gyms Near You</td>
+		  	<td>{
+		  		<br>lat: Latitude,
+		  		<br>lon: Longitude
+		  		<br>
+		  		}</td>
+		  </tr>
+		  <tr>
+			<td><b>POST</b></td>
+			<td>/api/users/create</td>	  	
+			<td>Create New User</td>
+			<td>{
+ 				<br>name: "First Last",
+				<br>email: "email@domain.com"
+				<br>
+				}
+			</td>
+		  </tr>
+		 </tbody>
+		</table>
+	</h1>
+ </div>
 </div>
-
-
-<h1>How to Use</h1>
-<br><hr>
-<h1>About Us</h1>
+<div class="section text-center">
+<h1>Projects that have used this API</h1>
+<h2><a href="http://andrew-mestas.github.io/BrawnzyInfoPage/" target="_blank">Brawnzy - <small>Your One Stop Workout Log</small></a></h2>
+</div>
+<div class="section text-center">
+<h1>About</h1>
+<p id="about">rocky-oasis-8496 was created during the creation of brawnzy in order to make it easier to work with. Future updates hope to include more information about user stats such as: weight tracking, progress prediction, and overall strength rating based on the frequency of a users workout.</p>
+</div>
+</div>

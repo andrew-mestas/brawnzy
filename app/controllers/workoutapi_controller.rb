@@ -81,7 +81,7 @@ def create
 
 
 
-  	render json: {workout: workouts, average: average}
+  	render json: {average: average, workout: workouts}
 	else 
 	render json: {workout: "No workouts yet"}
 	end

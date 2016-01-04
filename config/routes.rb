@@ -2,38 +2,39 @@ Rails.application.routes.draw do
 
   root 'main#index'
   get '/' => 'main#index'
-  get 'oauth/callback'
-  get 'oauth/logout'
-  get 'oauth/failure'
+  
+  # get 'oauth/callback'
+  # get 'oauth/logout'
+  # get 'oauth/failure'
   # post 'user/new' 
 
   # provider routes for facebook/auth controller
-  get 'auth/logout' => 'oauth#logout'
-  get 'auth/failure' => 'oauth#failure'
-  get 'auth/:provider/callback' => 'oauth#callback'
+  # get 'auth/logout' => 'oauth#logout'
+  # get 'auth/failure' => 'oauth#failure'
+  # get 'auth/:provider/callback' => 'oauth#callback'
 
   # routes for main app
-  get 'workout/all' => 'workout#all'
-  get 'workout/new' => 'workout#new'  
-  post 'workout/new' => 'workout#create'
+  # get 'workout/all' => 'workout#all'
+  # get 'workout/new' => 'workout#new'  
+  # post 'workout/new' => 'workout#create'
 
   
 
 
-  get 'workout/:id' => 'workout#show'
-  post 'workout/:id' => 'workout#time'
+  # get 'workout/:id' => 'workout#show'
+  # post 'workout/:id' => 'workout#time'
 
-  get '/signin' => 'sessions#new'
-  post '/signin' => 'sessions#create'
-  get '/signout' => 'sessions#destroy'
+  # get '/signin' => 'sessions#new'
+  # post '/signin' => 'sessions#create'
+  # get '/signout' => 'sessions#destroy'
 
-  get '/users/new' => 'user#new'
-  post '/users/new' => 'user#create'
+  # get '/users/new' => 'user#new'
+  # post '/users/new' => 'user#create'
 
 
-  get '/gyms/nearme' => 'workout#nearme'
-  post '/gyms/nearme' => 'workout#getgyms'
-  get '/stats' => 'workout#stats'
+  # get '/gyms/nearme' => 'workout#nearme'
+  # post '/gyms/nearme' => 'workout#getgyms'
+  # get '/stats' => 'workout#stats'
 
 # API ENDPOINTS
 
@@ -41,12 +42,15 @@ Rails.application.routes.draw do
 
   get '/api/stats/:name' => 'workoutapi#stats_data'
   post '/api/stats' => 'workoutapi#user_stats'
+
   get '/api/workout' => 'workoutapi#all'
   post '/api/workout' => 'workoutapi#create'
+
   post '/api/gyms/nearme' => 'workoutapi#getgyms'
 
   get '/api/workout/:id' => 'workoutapi#show'
   post '/api/workout/:id' => 'workoutapi#time'
+  
   post '/api/nearme' => 'workoutapi#nearme'
 
   post '/api/users/create' => 'userapi#create'

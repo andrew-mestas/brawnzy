@@ -14,6 +14,8 @@
  *= require sweet-alert
  *= require_self
  */
+@import url(https://fonts.googleapis.com/css?family=Michroma);
+
 #login{
   display: inline-block;
   float: right
@@ -25,4 +27,24 @@
 #map{
 	height:600px;
 	width: 600px;
+}
+br {
+    display: block; /* makes it have a width */
+    content: ""; /* clears default height */
+    margin-top: 0; /* change this to whatever height you want it */
+}
+
+
+.section{
+	color: #AE8200;
+	font-family: 'Michroma', sans-serif;	
+	position: relative;	
+	padding-top: 0em !important;
+	background: #121212 !important;
+	font-size: 1em;
+}
+
+#about{
+	color: #285983;
+	font-size: 26px;
 }
